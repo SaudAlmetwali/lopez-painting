@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interiors — Lopez Painting</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --dark: #111111;
+      --mid: #1e1e1e;
+      --light: #f5f5f5;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--dark);
+      color: var(--white);
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      background-color: #0a0a0a;
+      border-bottom: 2px solid var(--gold);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 32px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+      padding: 100px 20px 80px;
+      text-align: center;
+      border-bottom: 1px solid #2a2a2a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .page-hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      letter-spacing: 5px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .page-hero h1 span { color: var(--gold); }
+
+    .page-hero p {
+      color: #888;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-top: 20px;
+      letter-spacing: 1px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    /* ── GOLD DIVIDER ── */
+    .gold-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto 30px;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: #888;
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
+    }
+
+    /* ── SERVICES LIST ── */
+    .services-section {
+      padding: 100px 20px;
+      background-color: var(--mid);
+      text-align: center;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background-color: #161616;
+      border: 1px solid #2a2a2a;
+      border-left: 4px solid var(--gold);
+      padding: 30px 28px;
+      margin-bottom: 16px;
+      text-align: left;
+      transition: background 0.3s;
+    }
+
+    .service-item:hover { background-color: #1c1c1c; }
+
+    .service-item-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .service-item h5 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .service-item p {
+      color: #888;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section {
+      padding: 100px 20px;
+      background-color: var(--dark);
+      text-align: center;
+    }
+
+    .placeholder-img {
+      width: 100%;
+      background: linear-gradient(135deg, #1a1a1a, #272727);
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #555;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .placeholder-img span {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      opacity: 0.35;
+    }
+
+    .placeholder-lg { aspect-ratio: 16/9; margin-bottom: 16px; }
+    .placeholder-sm { aspect-ratio: 4/3; margin-bottom: 16px; }
+
+    /* ── ROOMS WE PAINT ── */
+    .rooms-section {
+      background-color: var(--mid);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .room-card {
+      background-color: #161616;
+      border: 1px solid #2a2a2a;
+      border-bottom: 3px solid var(--gold);
+      padding: 36px 24px;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+
+    .room-card:hover { transform: translateY(-6px); }
+
+    .room-card .icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .room-card h5 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .room-card p {
+      color: #777;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #0a0a0a, #161616);
+      border-top: 1px solid #2a2a2a;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: 4px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 14px 40px;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 2px;
+      background-color: var(--gold);
+      color: var(--dark);
+      border: 2px solid var(--gold);
+      transition: all 0.3s;
+    }
+
+    .btn-gold:hover {
+      background-color: transparent;
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: #0a0a0a;
+      border-top: 2px solid var(--gold);
+      padding: 50px 40px 30px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      letter-spacing: 4px;
+    }
+
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      margin: 0 16px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      color: #444;
+      font-size: 0.75rem;
+      margin-top: 30px;
+      letter-spacing: 1px;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="nav-logo">Lopez Painting</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="exteriors.html">Exteriors</a>
+      <a href="interiors.html" class="active">Interiors</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <p class="page-hero-tag fade-in">Our Services</p>
+    <h1 class="fade-in delay-1">Interior<br/><span>Painting</span></h1>
+    <p class="fade-in delay-2">Your home should feel exactly the way you want it. We bring precision, care, and clean craftsmanship to every room we touch.</p>
+  </section>
+
+  <!-- SERVICES LIST -->
+  <section class="services-section">
+    <div class="container">
+      <p class="section-label">What's Included</p>
+      <h2 class="section-title">Interior Services</h2>
+      <p class="section-sub">We handle everything from a single accent wall to a full home repaint — always clean, always precise.</p>
+
+      <div class="service-item">
+        <div class="service-item-icon">🎨</div>
+        <div>
+          <h5>Full Room Painting</h5>
+          <p>Walls, ceilings, trim — we do it all. Every surface is prepped and primed before paint goes on so the finish looks flawless and lasts.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-icon">✨</div>
+        <div>
+          <h5>Accent Walls</h5>
+          <p>Want one bold wall to anchor a room? We'll help you choose the right color and finish, then execute it perfectly.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-icon">🪚</div>
+        <div>
+          <h5>Trim & Baseboard Painting</h5>
+          <p>Clean, sharp trim work makes the whole room pop. We tape, prep, and paint every edge with precision.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-icon">🚪</div>
+        <div>
+          <h5>Doors & Cabinets</h5>
+          <p>Interior doors and cabinets painted to look factory-fresh. Great way to modernize a space without a full renovation.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-icon">🖌️</div>
+        <div>
+          <h5>Color Consultation</h5>
+          <p>Not sure what color to go with? We'll help you find the right palette that fits your style, lighting, and space.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-icon">🏢</div>
+        <div>
+          <h5>Commercial Interiors</h5>
+          <p>Offices, retail spaces, and commercial properties — we work around your schedule to minimize disruption.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="container">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Interior Projects</h2>
+      <p class="section-sub">Photos coming soon — check back as we update our portfolio.</p>
+
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="placeholder-img placeholder-lg"><span>🖼</span>Featured Interior Project</div>
+        </div>
+        <div class="col-md-4">
+          <div class="placeholder-img placeholder-sm"><span>🖼</span>Project Photo</div>
+        </div>
+        <div class="col-md-4">
+          <div class="placeholder-img placeholder-sm"><span>🖼</span>Project Photo</div>
+        </div>
+        <div class="col-md-4">
+          <div class="placeholder-img placeholder-sm"><span>🖼</span>Project Photo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS WE PAINT -->
+  <section class="rooms-section">
+    <div class="container">
+      <p class="section-label">Every Space</p>
+      <h2 class="section-title">Rooms We Paint</h2>
+      <p class="section-sub">No room is too big or too small — we handle them all.</p>
+
+      <div class="row g-4">
+        <div class="col-6 col-md-4">
+          <div class="room-card">
+            <div class="icon">🛋️</div>
+            <h5>Living Rooms</h5>
+            <p>The heart of your home — painted to impress every guest.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="room-card">
+            <div class="icon">🍳</div>
+            <h5>Kitchens</h5>
+            <p>Moisture-resistant finishes built for the busiest room in the house.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="room-card">
+            <div class="icon">🛏️</div>
+            <h5>Bedrooms</h5>
+            <p>Calm, cozy, or bold — we match your vision for your personal space.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="room-card">
+            <div class="icon">🚿</div>
+            <h5>Bathrooms</h5>
+            <p>Mold and moisture resistant paints that hold up in humid environments.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="room-card">
+            <div class="icon">🏠</div>
+            <h5>Hallways & Stairways</h5>
+            <p>High-traffic areas done in durable finishes that stay looking fresh.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="room-card">
+            <div class="icon">🏢</div>
+            <h5>Offices</h5>
+            <p>Professional environments painted efficiently and cleanly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to Refresh<br/>Your Interior?</h2>
+    <p>Get your free estimate today — no pressure, no obligation.</p>
+    <a href="contact.html" class="btn-gold">Get a Free Quote</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Lopez Painting</div>
+    <div class="gold-divider mt-3 mb-4"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="exteriors.html">Exteriors</a>
+      <a href="interiors.html">Interiors</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2025 Lopez Painting. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
