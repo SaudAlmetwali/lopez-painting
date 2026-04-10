@@ -212,6 +212,8 @@
       font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
     }
 
     .placeholder-img span {
@@ -444,7 +446,9 @@
 
       <div class="row g-3">
         <div class="col-12">
-          <div class="placeholder-img placeholder-lg"><span>🖼</span>Featured Exterior Project</div>
+          <div class="placeholder-img placeholder-lg">
+            <img src="images/ext1.jpg" alt="Featured Exterior Project" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+          </div>
         </div>
         <div class="col-md-4">
           <div class="placeholder-img placeholder-sm"><span>🖼</span>Project Photo</div>
